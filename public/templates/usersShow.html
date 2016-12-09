@@ -1,0 +1,9 @@
+<h1>show</h1>
+
+<section>
+
+ <h2>{{ usersShow.user.username }}</h2>
+
+ <a ng-if="usersShow.isCurrentUser()" ui-sref="usersEdit({ id: usersShow.user.id })" class="button">Edit</a>
+ <button ng-if="usersShow.isCurrentUser()" ng-click="usersShow.delete()">Delete</button>
+</section>
