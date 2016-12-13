@@ -10,7 +10,8 @@
 
   <h2>Suggestions:</h2>
   <ul>
-    <li ng-repeat="suggestion in postsShow.post.suggestions">{{ suggestion }}</li>
+    <li ng-repeat="suggestion in postsShow.post.suggestions">{{ suggestion }}<button ng-click="postsShow.deleteSuggestion(suggestion)" ng-show="postsShow.postOwner">Delete</button></li>
+    <!-- ng-show refers to the code wirtten in posts controller -->
   </ul>
 
   <h2>Categories:</h2>
@@ -23,6 +24,8 @@
   </ul>
 
   <h2>Created By: {{ postsShow.post.user.username}}</h2>
+
+  <button ng-click="postsShow.deletePost()" ng-show="postsShow.postOwner">Delete Post</button>
 
   <button ng-click="postsShow.formVisible = postsShow.formVisible ? false : true" ng-hide="postsShow.post.suggestions.length >= 3">Add suggestion</button>
 

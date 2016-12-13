@@ -1,5 +1,5 @@
-<section>
-  <form novalidate ng-submit="login.submit()">
+<div class="popup" ng-show="main.loginVisible" ng-controller="LoginController as login">
+  <form novalidate ng-submit="login.submit(); main.loginVisible = false">
     <div>
       <label>Email</label>
       <input type="email" placeholder="Email" ng-model="login.credentials.email">
@@ -10,5 +10,6 @@
     </div>
 
     <button>Login</button>
+    <button type="button" ng-click="main.loginVisible = false">Cancel</button>
   </form>
-</section>
+</div>

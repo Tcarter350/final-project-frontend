@@ -11,7 +11,8 @@ function RegisterController($auth, $state) {
   function submit() {
     $auth.signup(register.user)
       .then(() => {
-        $state.go('login');
+        const id = $auth.getPayload().id;
+        $state.go('usersShow', {id: id});
       });
   }
 
@@ -27,7 +28,8 @@ function LoginController($auth, $state) {
   function submit() {
     $auth.login(login.credentials)
       .then(() => {
-        $state.go('usersIndex');
+        const id = $auth.getPayload().id;
+        $state.go('usersShow', {id: id});
       });
   }
 

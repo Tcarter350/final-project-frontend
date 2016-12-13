@@ -8,12 +8,29 @@
 
  <a ng-if="usersShow.isCurrentUser()" ui-sref="usersEdit({ id: usersShow.user.id })" class="button">Edit</a>
  <button ng-if="usersShow.isCurrentUser()" ng-click="usersShow.delete()">Delete</button>
+ <!-- this is setting the form visible to false, so when you click on it it will change to true and the pop up form will appear -->
+ <button ng-click="usersShow.postformVisible = true">Create Post</button>
 </section>
 
-<div class="contentSection">
-  <div ng-controller="ProfileFeedController as profileFeed" class="feedSection card-container">
-    <div ng-if="!login.isActive" ng-repeat="post in profileFeed.all" class="card feedView">
-      <card></card>
+ <h2>{{ usersShow.user.username }}'s Posts</h2>
+<ul>
+  <li ng-repeat="post in usersShow.user.posts | orderBy: '-created_at'">
+    {{post}}
+  </li>
+</ul>
+
+
+<div class="popup" ng-show="usersShow.postformVisible">
+  <form ng-submit="usersShow.createPost()">
+    <div class="form-group">
+      <!-- <label>Image</label> -->
+      <input type="text" name="image" placeholder="Image goes here" ng-model="usersShow.newPost.image" class="form-control">
     </div>
-  </div>
+    <div class="form-group">
+      <!-- <label>Caption</label> -->
+      <input type="text" name="caption" placeholder="Caption" ng-model="usersShow.newPost.caption" class="form-control">
+    </div>
+    <input type="submit" value="Create Post" class="btn">
+    <button type="button" ng-click="usersShow.postformVisible = false" class="btn">Cancel</button>
+  </form>
 </div>

@@ -13,13 +13,16 @@
 
     <nav>
       <ul>
-        <li><a ui-sref="usersIndex" ui-sref-active="active">Users</a></li>
-        <!-- <li ng-if="main.isLoggedIn()"><a ui-sref="usersNew" ui-sref-active="active">New User</a></li> -->
-        <li ng-if="!main.isLoggedIn()"><a ui-sref="register" ui-sref-active="active">Register</a></li>
-        <li ng-if="!main.isLoggedIn()"><a ui-sref="login" ui-sref-active="active">Login</a></li>
+        <li ng-if="main.isLoggedIn()"><a ui-sref="postsIndex" ui-sref-active="active">Discover</a></li>
+        <li ng-if="main.isLoggedIn()"><a ng-click="main.getUserId()">Profile</a></li>
+        <li ng-if="!main.isLoggedIn()"><a ng-click="main.registerVisible = true" ui-sref-active="active">Register</a></li>
+        <li ng-if="!main.isLoggedIn()"><a ng-click="main.loginVisible = true" ui-sref-active="active">Login</a></li>
         <li ng-if="main.isLoggedIn()"><a ng-click="main.logout()">Logout</a></li>
       </ul>
     </nav>
+
+    <ng-include src="'templates/login.html'"></ng-include>
+    <ng-include src="'templates/register.html'"></ng-include>
 
     <main ui-view></main>
   </body>

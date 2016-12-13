@@ -5,15 +5,28 @@ function MainController($auth, $state, $rootScope) {
   const main = this;
   main.isLoggedIn = $auth.isAuthenticated;
   main.message = null;
+  main.loginVisible = false;
+  main.registerVisible = false;
   function logout() {
     $auth.logout()
     .then(() => {
-      $state.go('usersIndex');
+      $state.go('postsIndex');
     });
   }
+
+  function getUserId() {
+    const userId = $auth.getPayload().id;
+    $state.go('usersShow', {id: userId});
+  }
+
+
+
+
   const protectedStates = ['usersEdit', 'usersNew'];
   function secureState(e, toState, toParams) {
     main.message = null;
+    main.loginVisible = false;
+    main.registerVisible = false;
     if((!$auth.isAuthenticated() &&
     protectedStates.includes(toState.name)) ||
     toState.name === 'usersEdit' && (parseFloat(toParams.id) !== $auth.getPayload().id)) {
@@ -24,4 +37,5 @@ function MainController($auth, $state, $rootScope) {
   }
   $rootScope.$on('$stateChangeStart', secureState);
   main.logout = logout;
+  main.getUserId = getUserId;
 }
