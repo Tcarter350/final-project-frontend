@@ -1,0 +1,7 @@
+<h1>{{categoriesShow.category.name}}</h1>
+
+<ul>
+  <li ng-repeat="post in categoriesShow.category.posts">
+    <a ui-sref="postsShow({id: post.id})">{{post.caption}}</a>
+  </li>
+</ul>

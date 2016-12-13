@@ -1,0 +1,11 @@
+<section>
+  <h1>POSTS INDEX PAGE!!!!!!!!INDEX/HOMEPAGE/CATEGORIES LINK GOES HERE</h1>
+  <ul>
+    <li ng-repeat="post in postsIndex.all">
+      {{post.id}}
+      {{post.caption}}
+      <h2 ui-sref="postsShow({id: post.id })">{{ post.image }}</h2>
+
+    </li>
+  </ul>
+</section>

@@ -36,3 +36,10 @@ function UsersEditController(User, $state) {
   }
   this.update = update;
 }
+
+ProfileFeedController.$inject = [ '$state', 'ProfileFeed' ];
+function ProfileFeedController($state, ProfileFeed) {
+  const profileFeed = this;
+
+  profileFeed.all = ProfileFeed.query($state.params);
+}

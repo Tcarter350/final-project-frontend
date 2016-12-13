@@ -1,0 +1,42 @@
+<h1>Post Show</h1>
+
+<section>
+
+  <h2>Post Id: {{ postsShow.post.id }}</h2>
+
+  <img src="{{ postsShow.post.image }}" alt=""/>
+
+  <h2>Caption: {{ postsShow.post.caption }}</h2>
+
+  <h2>Suggestions:</h2>
+  <ul>
+    <li ng-repeat="suggestion in postsShow.post.suggestions">{{ suggestion }}</li>
+  </ul>
+
+  <h2>Categories:</h2>
+  <ul>
+    <li ng-repeat="category in postsShow.post.categories">
+      <a ui-sref="categoriesShow({id: category.id})">
+        Category id: {{ category.id }}, Name: {{ category.name }}
+      </a>
+    </li>
+  </ul>
+
+  <h2>Created By: {{ postsShow.post.user.username}}</h2>
+
+  <button ng-click="postsShow.formVisible = postsShow.formVisible ? false : true" ng-hide="postsShow.post.suggestions.length >= 3">Add suggestion</button>
+
+  <div class="popup" ng-show="postsShow.formVisible">
+    <form ng-submit="postsShow.createSuggestion()">
+      <div class="form-group">
+        <input type="text" name="link" placeholder="link" ng-model="postsShow.newSuggestion.link" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="text" name="price" placeholder="price" ng-model="postsShow.newSuggestion.price" class="form-control">
+      </div>
+      <input type="submit" value="Create Suggestion" class="btn">
+      <button type="button" ng-click="postsShow.formVisible = false" class="btn">Cancel</button>
+    </form>
+  </div>
+
+</section>
