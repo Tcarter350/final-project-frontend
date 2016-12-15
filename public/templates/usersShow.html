@@ -4,7 +4,7 @@
    <div class="user-image" style="background-image:url('{{ usersShow.user.image}}')"></div>
    <a>{{ usersShow.user.username}}</a></br>
    <a ng-if="usersShow.isCurrentUser()" ng-click="usersShow.editformVisible = true" class="button">edit</a>
-   <a ng-if="usersShow.isCurrentUser()" ng-click="usersShow.delete()" class="button" id="plus">delete</a></br>
+   <a ng-if="usersShow.isCurrentUser()" ng-click="usersShow.delete()" class="button">delete</a></br>
    <!-- this is setting the form visible to false, so when you click on it it will change to true and the pop up form will appear -->
    <a ng-if="usersShow.isCurrentUser()" ng-click="usersShow.postformVisible = true" id="plus" class="button">+</a>
  </div>
@@ -16,13 +16,16 @@
   <!-- <h1>INDEX/HOMEPCATEGORIES LINK GOES HERE</h1> -->
   <ul class="index-grid">
     <li class="index" ng-repeat="post in usersShow.user.posts | orderBy: '-created_at'">
-      <div class="index-image" style="background-image:url('{{ post.image }}')" ui-sref="postsShow({id: post.id})"></div>
+      <div class="index-image" style="background-image:url('{{ post.image }}')" ui-sref="postsShow({id: post.id})">
+        <div class="index-image-overlay">
+        <h2>view</h2>
+      </div></div>
     </li>
   </ul>
 </section>
 
 <div class="popup" ng-if="usersShow.editformVisible" ng-controller="UsersEditController as usersEdit">
-  <form ng-submit="usersEdit.update(); usersShow.editformVisible = false">
+  <form class="editthing" ng-submit="usersEdit.update(); usersShow.editformVisible = false">
     <div class="twelve columns">
       <label>Username</label>
       <input type="text" ng-model="usersEdit.user.username" class="u-full-width">
@@ -44,7 +47,7 @@
       <drag-drop base64="usersEdit.user.base64"></drag-drop>
     </div>
 
-   <button>Update</button>
+   <button>Update</button> |
    <button type="button" ng-click="usersShow.editformVisible = false">Cancel</button>
   </form>
 </div>
@@ -61,7 +64,12 @@
       <!-- <label>Caption</label> -->
       <input type="text" name="caption" placeholder="Caption" ng-model="usersShow.newPost.caption">
     </div>
-    <input type="submit" value="Create Post">
+
+    <label ng-repeat="category in usersShow.categories">
+      <input type="checkbox" name="categoryIds[]" value="{{category.id}}" ng-click="usersShow.toggleSelection(category.id)">{{category.name}}
+    </label>
+  </br>
+    <input type="submit" value="Create Post"> |
     <button type="button" ng-click="usersShow.postformVisible = false">Cancel</button>
   </form>
 </div>

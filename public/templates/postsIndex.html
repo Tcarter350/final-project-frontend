@@ -2,7 +2,11 @@
   <!-- <h1>INDEX/HOMEPCATEGORIES LINK GOES HERE</h1> -->
   <ul class="index-grid">
     <li class="index" ng-repeat="post in postsIndex.all">
-      <div class="index-image" style="background-image:url('{{ post.image }}')" ui-sref="postsShow({id: post.id})"></div>
+      <div class="index-image" style="background-image:url('{{ post.image }}')" ui-sref="postsShow({id: post.id})">
+        <div class="index-image-overlay">
+          <h2>view</h2>
+        </div>
+      </div>
     </li>
   </ul>
 </section>

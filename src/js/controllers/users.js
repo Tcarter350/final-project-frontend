@@ -2,8 +2,8 @@ angular.module('finalProject')
   .controller('UsersShowController', UsersShowController)
   .controller('UsersEditController', UsersEditController);
 
-UsersShowController.$inject = ['User', '$state', '$auth', 'Post'];
-function UsersShowController(User, $state, $auth, Post) {
+UsersShowController.$inject = ['User', '$state', '$auth', 'Post', 'Category'];
+function UsersShowController(User, $state, $auth, Post, Category) {
   const usersShow = this;
   usersShow.postformVisible = false;
   usersShow.editformVisible = false;
@@ -29,9 +29,21 @@ function UsersShowController(User, $state, $auth, Post) {
   //form visibility set to false. now in the usersShow.html the hide/show button code will work
 
   usersShow.newPost = {
-    user_id: $state.params.id
+    user_id: $state.params.id,
+    category_ids: []
   };
   usersShow.user = User.get($state.params);
+
+  usersShow.categories = Category.query();
+
+  function toggleSelection(category) {
+    var index = usersShow.newPost.category_ids.indexOf(category);
+    if (index > -1) {
+      usersShow.newPost.category_ids.splice(index, 1);
+    } else {
+      usersShow.newPost.category_ids.push(category)
+    }
+  }
 
   function createPost() {
     Post.save(usersShow.newPost, () => {
@@ -45,6 +57,7 @@ function UsersShowController(User, $state, $auth, Post) {
   }
 
   usersShow.createPost = createPost;
+  usersShow.toggleSelection = toggleSelection;
 }
 
 

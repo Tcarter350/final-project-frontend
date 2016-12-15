@@ -9,7 +9,7 @@
 
     <!-- <h2>Post Id: {{ postsShow.post.id }}</h2> -->
     <div class="col-md-6 col-xs-12">
-      <div class="post-image" style="background-image:url({{ postsShow.post.image }})">{{ post.createdAt | date:'fullDate' }}</div>
+      <div class="post-image" style="background-image:url({{ postsShow.post.image }})"></div>
     </div>
     <!-- <img class="postimg" src="{{ postsShow.post.image }}" alt=""/> -->
 
@@ -34,7 +34,7 @@
           <!-- REMEMBER TO STYLE THIS LATER -->
           <!-- <button ng-click="postsShow.deleteSuggestion(suggestion)" ng-show="postsShow.postOwner">Delete</button></li> -->
 
-          <div class="suggestion-add" ng-click="postsShow.formVisible = postsShow.formVisible ? false : true" ng-hide="postsShow.post.suggestions.length >= 3">
+          <div class="suggestion-add" ng-click="postsShow.formVisible = postsShow.formVisible ? false : true" ng-hide="postsShow.post.suggestions.length >= 3" ng-show="postsShow.postOwner">
             <span>+</span>
           </div>
 
@@ -44,30 +44,30 @@
       </div>
 
       <!-- <h2>Categories:</h2> -->
-      <ul>
+      <!-- <ul>
         <li ng-repeat="category in postsShow.post.categories">
           <a ui-sref="categoriesShow({id: category.id})">
             Category id: {{ category.id }}, Name: {{ category.name }}
           </a>
         </li>
-      </ul>
+      </ul> -->
 
-      <button ng-click="postsShow.deletePost()" ng-show="postsShow.postOwner">Delete Post</button>
+      <!-- <button ng-click="postsShow.deletePost()" ng-show="postsShow.postOwner">Delete Post</button> -->
     </div>
 
     <div class="popup" ng-show="postsShow.formVisible">
       <form class="sug-form" ng-submit="postsShow.createSuggestion()">
-        <div class="form-group">
+        <div>
           <drag-drop base64="postsShow.newSuggestion.base64"></drag-drop>
         </div>
-        <div class="form-group">
-          <input type="text" name="link" placeholder="link" ng-model="postsShow.newSuggestion.link" class="form-control">
+        <div>
+          <input type="text" name="link" placeholder="link" ng-model="postsShow.newSuggestion.link">
         </div>
-        <div class="form-group">
-          <input type="text" name="price" placeholder="price" ng-model="postsShow.newSuggestion.price" class="form-control">
+        <div>
+          <input type="text" name="price" placeholder="price" ng-model="postsShow.newSuggestion.price">
         </div>
-        <input type="submit" value="Create Suggestion" class="btn">
-        <button type="button" ng-click="postsShow.formVisible = false" class="btn">Cancel</button>
+        <input type="submit" value="Create Suggestion"> |
+        <button type="button" ng-click="postsShow.formVisible = false">Cancel</button>
       </form>
     </div>
 </section>
