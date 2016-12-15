@@ -1,7 +1,18 @@
-<h1>Category INDEX </h1>
+<section>
+  <ul class="index-grid">
+    <li class="index" ng-repeat="category in categoriesIndex.all">
+      <div class="index-image" style="background-image:url('{{ category.posts[0].image }}')" ui-sref="categoriesShow({id: category.id})"></div>
+      <!-- <a ui-sref="categoriesShow({id: category.id})"> -->
+      {{category.name}}
+    </li>
+  </ul>
+</section>
 
-<ul>
-  <li ng-repeat="category in categoriesIndex.all"><a ui-sref="categoriesShow({id: category.id})">
-    {{category.name}}
-  </li>
-</ul>
+<section>
+  <!-- <h1>INDEX/HOMEPCATEGORIES LINK GOES HERE</h1> -->
+  <ul class="index-grid">
+    <li class="index" ng-repeat="post in postsIndex.all">
+      <div class="index-image" style="background-image:url('{{ post.image }}')" ui-sref="postsShow({id: post.id})"></div>
+    </li>
+  </ul>
+</section>

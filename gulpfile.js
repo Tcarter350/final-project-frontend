@@ -88,6 +88,13 @@ gulp.task('html', () => {
     .pipe(livereload());
 });
 
+// assets
+gulp.task('assets', () => {
+  return gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('public/assets'))
+    .pipe(livereload());
+});
+
 // nodemon
 gulp.task('nodemon', () => {
   return nodemon()
@@ -104,7 +111,8 @@ gulp.task('watch', () => {
   gulp.watch('src/**/*.html', ['html']);
   gulp.watch('src/**/*.js', ['scripts']);
   gulp.watch('src/**/*.scss', ['styles']);
+  gulp.watch('src/assets/**/*', ['assets']);
   gulp.watch('src/**/*.scss', ['styles', 'styles:vendor']);
 });
 
-gulp.task('default', sequence('clean', ['bower:js', 'bower:css'], ['scripts', 'styles', 'styles:vendor', 'html'], 'watch', 'nodemon'));
+gulp.task('default', sequence('clean', ['bower:js', 'bower:css'], ['scripts', 'styles', 'styles:vendor', 'html', 'assets'], 'watch', 'nodemon'));

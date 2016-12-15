@@ -1,7 +1,32 @@
 <h1>edit</h1>
 
 <section class="row">
- <form ng-submit="usersEdit.update()">
+  <form ng-submit="usersEdit.update(); usersShow.editformVisible = false">
+    <div class="twelve columns">
+      <label>Username</label>
+      <input type="text" ng-model="usersEdit.user.username" class="u-full-width">
+    </div>
+    <div class="twelve columns">
+      <label>Email</label>
+      <input type="text" ng-model="usersEdit.user.email" class="u-full-width">
+    </div>
+    <div class="twelve columns">
+      <label>Password</label>
+      <input type="password" ng-model="usersEdit.user.password" class="u-full-width">
+    </div>
+    <div class="twelve columns">
+      <label>Password Confirmation</label>
+      <input type="password" ng-model="usersEdit.user.password_confirmation" class="u-full-width">
+    </div>
+    <div class="twelve columns">
+      <label>Profile Image:</label>
+      <drag-drop base64="usersEdit.user.base64"></drag-drop>
+    </div>
+
+   <button>Update</button>
+   <button type="button" ng-click="usersShow.editformVisible = false">Cancel</button>
+  </form>
+ <!-- <form ng-submit="usersEdit.update()">
    <div class="twelve columns">
      <label>Username</label>
      <input type="text" name="title" placeholder="Title" ng-model="usersEdit.user.username" class="u-full-width">
@@ -12,5 +37,5 @@
    </div>
 
    <button>Update</button>
- </form>
+ </form> -->
 </section>

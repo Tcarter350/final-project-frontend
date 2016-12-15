@@ -7,23 +7,34 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/vendor.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fanwood+Text" rel="stylesheet">
   </head>
   <body ng-controller="MainController as main">
-    <h1>Hello</h1>
+
 
     <nav>
-      <ul>
-        <li ng-if="main.isLoggedIn()"><a ui-sref="postsIndex" ui-sref-active="active">Discover</a></li>
-        <li ng-if="main.isLoggedIn()"><a ng-click="main.getUserId()">Profile</a></li>
-        <li ng-if="!main.isLoggedIn()"><a ng-click="main.registerVisible = true" ui-sref-active="active">Register</a></li>
-        <li ng-if="!main.isLoggedIn()"><a ng-click="main.loginVisible = true" ui-sref-active="active">Login</a></li>
-        <li ng-if="main.isLoggedIn()"><a ng-click="main.logout()">Logout</a></li>
+      <ul class="container">
+        <div class="left">
+          <li><a ui-sref="categoriesIndex" ui-sref-active="active">categories</a></li>
+        </div>
+
+        <li class="logo"><a ui-sref="postsIndex" ui-sref-active="active">GRAIN</a></li>
+
+        <div class="right">
+          <li><a ui-sref="postsIndex" ui-sref-active="active">discover</a></li>
+          <li ng-if="main.isLoggedIn()"><a ng-click="main.getUserId()">profile</a></li>
+          <li ng-if="!main.isLoggedIn()"><a ng-click="main.registerVisible = true" ui-sref-active="active">register</a></li>
+          <li ng-if="!main.isLoggedIn()"><a ng-click="main.loginVisible = true" ui-sref-active="active">login</a></li>
+          <li ng-if="main.isLoggedIn()"><a ng-click="main.logout()">logout</a></li>
+        </div>
       </ul>
     </nav>
 
     <ng-include src="'templates/login.html'"></ng-include>
     <ng-include src="'templates/register.html'"></ng-include>
 
-    <main ui-view></main>
+    <main ui-view class="container"></main>
+    
   </body>
 </html>

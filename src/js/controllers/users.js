@@ -6,10 +6,14 @@ UsersShowController.$inject = ['User', '$state', '$auth', 'Post'];
 function UsersShowController(User, $state, $auth, Post) {
   const usersShow = this;
   usersShow.postformVisible = false;
+  usersShow.editformVisible = false;
   usersShow.user = User.get($state.params);
   function deleteUser() {
     usersShow.user.$remove(() => {
-      $state.go('usersIndex');
+      $auth.logout()
+        .then(() => {
+          $state.go('postsIndex');
+        });
     });
   }
 

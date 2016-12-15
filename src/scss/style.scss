@@ -1,3 +1,20 @@
+body {
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  line-height: 125%;
+  padding-bottom: 30px;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -5,6 +22,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.6);
+  border-style: double;
 
   form {
     background-color: white;
@@ -14,4 +32,269 @@
     transform: translate(-50%, -50%);
     padding: 20px;
   }
+}
+
+.drag-drop {
+  height: 200px;
+  width: 200px;
+  background-color: #fafafa;
+  border-radius: 5px;
+
+  img {
+    width: 100%;
+  }
+
+  &.active {
+    background-color: #fcfcfc;
+  }
+}
+
+.register-form {
+  .drag-drop {
+    height: 200px;
+
+    img {
+      max-height: 200px;
+      width: auto;
+    }
+  }
+}
+
+.sug-form {
+  .drag-drop {
+    height: 200px;
+    width: 200px;
+
+    img {
+      max-height: 200px;
+      width: auto;
+    }
+  }
+}
+
+.post-image {
+  background-position: center;
+  background-size: cover;
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.user-details {
+  text-align: center;
+  margin-bottom: 30px;
+  .user-image {
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto 10px;
+  }
+  a {
+    color: black;
+    text-transform: uppercase;
+  }
+
+}
+
+.suggestions {
+  margin-top: 30px;
+  overflow: hidden;
+  h3 {
+    font-size: 10px;
+    text-align: center;
+    color: #E1E0E1;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+  hr {
+    color: #E1E0E1;
+    margin: 10px 0 15px 0;
+  }
+}
+
+.suggestion-single {
+  width: calc(33.33% - 10px);
+  float: left;
+  margin-right: 15px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  &:nth-child(3) {
+    margin-right: 0;
+  }
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  .suggestion-overlay {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.4);
+    opacity: 0;
+    transition: all 0.4s ease;
+    &:hover {
+      opacity: 1;
+    }
+    h3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      color: black;
+      margin: 0;
+    }
+  }
+}
+
+.suggestion-add {
+  width: calc(33.33% - 10px);
+  float: left;
+  position: relative;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: 300;
+    color: #c8c8c8;
+  }
+}
+
+// .postcontainer {
+//
+//   align: center;
+//   background-color: pink;
+//   width: 850px;
+//   height: 600px;
+//
+//     .postimg {
+//       width: 70%;
+//       padding: 10px;
+//     }
+//
+//   .profpic {
+//     max-height: 150px;
+//     width: auto;
+//     border-radius: 300px;
+//   }
+//
+// }
+
+.index-grid {
+  padding: 0;
+  margin: 0;
+  .index {
+    width: 50%;
+    padding: 3px;
+    float: left;
+    .index-image {
+      background-position: center;
+      background-size: cover;
+      &:after {
+        content: "";
+        display: block;
+        padding-bottom: 65%;
+      }
+    }
+    img {
+      height: 350px;
+      width: 500px;
+      // padding: 3px;
+    }
+  }
+}
+
+
+li {
+  list-style-type: none;
+  display: inline;
+}
+
+.userphotos {
+  img {
+    height: 350px;
+    width: 500px;
+    padding: 3px;
+  }
+}
+
+nav {
+  position: relative;
+  height: 70px;
+  text-align: center;
+  margin-bottom: 30px;
+  ul {
+    position: relative;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 90%;
+    left: 5%;
+    bottom: 0;
+    background-color: #E1E0E1;
+  }
+  .left {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    li {
+      margin-right: 5px;
+    }
+  }
+  .right {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    li {
+      margin-left: 5px;
+    }
+  }
+  li {
+    line-height: 70px;
+    a {
+      color: black;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline !important;
+      }
+    }
+  }
+  .logo {
+    font-family: 'Fanwood Text', serif;
+    font-size: 30px;
+    a {
+      color: #313335;
+      &:hover, &:focus, &:active {
+        text-decoration: none !important;
+      }
+    }
+  }
+}
+// #222223;
+.button {
+  cursor: pointer;
+}
+
+#plus {
+  font-size: 10px !important;
 }

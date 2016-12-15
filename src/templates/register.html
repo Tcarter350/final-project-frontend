@@ -1,23 +1,29 @@
 <div class="popup" ng-show="main.registerVisible" ng-controller="RegisterController as register">
-  <form novalidate ng-submit="register.submit(); main.falseVisible = false">
+  <form class="register-form" novalidate ng-submit="register.submit(); main.falseVisible = false">
     <div>
-      <label>Username</label>
+      <label>username:</label>
       <input type="text" placeholder="Username" ng-model="register.user.username">
     </div>
     <div>
-      <label>Email</label>
+      <label>email:</label>
       <input type="email" placeholder="Email" ng-model="register.user.email">
     </div>
     <div>
-      <label>Password</label>
+      <label>password:</label>
       <input type="password" placeholder="Password" ng-model="register.user.password">
     </div>
     <div>
-      <label>Password Confirmation</label>
+      <label>password confirmation:</label>
       <input type="password" placeholder="Password Confirmation" ng-model="register.user.password_confirmation">
     </div>
 
-    <button>Register</button>
-    <button type="button" ng-click="main.registerVisible = false">Cancel</button>
+    <div>
+      <label>profile image:</label>
+      <drag-drop base64="register.user.base64"></drag-drop>
+    </div>
+
+    <button>register</button>
+    <!-- |<a type="button" class="button">register</a> -->
+    <a type="button" class="button" ng-click="main.registerVisible = false">cancel</a>
   </form>
 </div>

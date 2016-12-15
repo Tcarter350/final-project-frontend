@@ -1,11 +1,8 @@
 <section>
-  <h1>POSTS INDEX PAGE!!!!!!!!INDEX/HOMEPAGE/CATEGORIES LINK GOES HERE</h1>
-  <ul>
-    <li ng-repeat="post in postsIndex.all">
-      {{post.id}}
-      {{post.caption}}
-      <h2 ui-sref="postsShow({id: post.id })">{{ post.image }}</h2>
-
+  <!-- <h1>INDEX/HOMEPCATEGORIES LINK GOES HERE</h1> -->
+  <ul class="index-grid">
+    <li class="index" ng-repeat="post in postsIndex.all">
+      <div class="index-image" style="background-image:url('{{ post.image }}')" ui-sref="postsShow({id: post.id})"></div>
     </li>
   </ul>
 </section>
